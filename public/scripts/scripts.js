@@ -165,6 +165,7 @@ const setVelocities = (e) => {
 // Get the canvas element
 const snakeBoard = document.getElementById('snake-game-canvas')
 
+// refocus on blur to prevent a user from accidentally clicking out of canvas and breaking game
 $(snakeBoard).on('blur', () => {
  if (running) {
   snakeBoard.focus()
@@ -258,7 +259,7 @@ const handleCloseInstructionsButtonClick = (e) => {
 
 // toggle instructions on/off on instructions button click
 const handleInstructionsButtonClick = (e) => {
-  $('.game-instructions-modal').hasClass('hidden') ? $('.game-instructions-modal').removeClass('hidden') : $('.game-instructions-modal').addClass('hidden')
+  $('.game-instructions-modal').toggleClass('hidden')
 }
 
 // reset to blank canvas
@@ -360,6 +361,7 @@ const populatePill = (x, y) => {
 
   // if called without all arguments, generate random x and y values for pills
   if (!x || !y) {
+
     // get random 10x10 blocks on the canvas for pill placement
     // add five to center the pill in the square on the grid
     possibleX = Math.random() * 60 + 5
@@ -411,7 +413,6 @@ const checkForPillCollision = (head) => {
 
     // increment turn
     turn++
-
 
     // gradually speed up movement of the snake
     timeout = Number((timeout - .04).toFixed(2))
