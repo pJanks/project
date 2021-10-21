@@ -326,7 +326,6 @@ const moveSnake = () => {
 // runGame function called repeatedly to keep the game running
 const runGame = (e) => {
   if (loser) {
-    
     // show game over modal
     $('.game-over-modal').removeClass('hidden')
     
@@ -338,8 +337,9 @@ const runGame = (e) => {
     
     // clear current board
     snakeBoardContext.clearRect(0, 0, snakeBoard.width, snakeBoard.height)
-  // } else if (timeout <= 40) {
-  //   winner = true
+
+  } else if (timeout <= 50) {
+    winner = true
   } else {
     // run app repeatedly
     running = true
