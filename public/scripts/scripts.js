@@ -83,7 +83,7 @@ interval
 
 $(document).ready(() => {
   const tableObject = {
-    intervalRunsEvery: `${timeout} ms`,
+    intervalRunsIn: `${timeout} ms`,
     nextPillIsWorth: points,
     score,
     turn,
@@ -183,11 +183,20 @@ const HandleStartOrResetButtonClick = (e) => {
   seconds = 0
   $('.timer').html(`${padTimes(hours)}:${padTimes(minutes)}:${padTimes(seconds)}`)
 
+  const tableObject = {
+      intervalRunsIn: `${timeout} ms`,
+      nextPillIsWorth: points,
+      score,
+      turn,
+    }
+    console.table(tableObject)
+
   // reset player status and start with original centered snake
   loser = false
+  timeout = 100
   snakeCopy = getInitialSnake()
   score = 0
-  timeout = 100
+  turn = 0
   points = 100
   keyClicked = false
 
@@ -414,7 +423,7 @@ const checkForPillCollision = (head) => {
     // console.log('--------------end--------------')
 
     const tableObject = {
-      intervalRunsEvery: `${timeout} ms`,
+      intervalRunsIn: `${timeout} ms`,
       nextPillIsWorth: points,
       score,
       turn,
